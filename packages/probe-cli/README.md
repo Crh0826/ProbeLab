@@ -10,7 +10,7 @@ probe minimize ./probe-output/cases/probe-0001.probe.json --budget runs=500,tick
 probe regress ./probe-output/cases/probe-0001.probe.json --adapter sandbox-fixed --target-scenario healthy --allow-world-change --allow-config-change
 ```
 
-The CLI writes exactly one JSON document to stdout. Progress and human-readable errors go to stderr. Reports are written under `--output` in JSON, Markdown, or both (`--format json|md|both`). Fault packets are saved under `cases/`; use `--save-all` to retain healthy packets as well. `--max-faults` and `--max-output-bytes` cap saved packet evidence. Runs also cap a case at 100,000 ticks and a command at 1,000,000 total probe ticks.
+The CLI writes exactly one JSON document to stdout. Progress and human-readable errors go to stderr. Reports are written under `--output` in JSON, Markdown, or both (`--format json|md|both`). Fault packets are saved under `cases/`; use `--save-all` to retain healthy packets as well. `--max-faults` and `--max-output-bytes` cap saved packet evidence. Runs also cap a case at 3,600 ticks and a command at 1,000,000 total probe ticks.
 
 Exit codes are `0` for a healthy run or successful replay/regression, `1` for a detected fault or failed expectation, `2` for invalid input, incompatible adapters, or simulation errors, and `130` for interrupted runs with an incomplete report.
 
