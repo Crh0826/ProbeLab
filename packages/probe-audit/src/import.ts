@@ -12,5 +12,6 @@ export function importAuditReport(text:string):AuditReport {
     const r=e.route;if(!r||!point(r.start)||!point(r.goal)||!Array.isArray(r.waypoints)||r.waypoints.length>10000||!r.waypoints.every(point)||!['spawn-route','stairs-ramp','jump-landing'].includes(r.kind)||typeof r.id!=='string'||!Array.isArray(e.attempts)||e.attempts.length>2)throw new TypeError('Invalid route');
     for(const a of e.attempts)if(typeof a.arrived!=='boolean'||typeof a.reason!=='string'||!Number.isFinite(a.closestDistance)||!Number.isSafeInteger(a.stalledTicks)||a.stalledTicks<0||!Array.isArray(a.frames)||a.frames.length>3600||!a.frames.every(f=>Number.isInteger(f.tick)&&f.tick>0&&point(f.position)))throw new TypeError('Invalid trace');
   }
+  if(report.debugMap&&(!Array.isArray(report.debugMap.surfaces)||report.debugMap.surfaces.length>20000||!report.debugMap.surfaces.every(s=>typeof s.id==='string'&&point(s.bounds?.min)&&point(s.bounds?.max)&&s.bounds.min.every((n,i)=>n<s.bounds.max[i]!)&&['visible','solid','bulletSolid','exactVisual'].every(k=>typeof s[k as keyof typeof s]==='boolean'))))throw new TypeError('Invalid debug map snapshot');
   const {contentHash,...body}=report;if(canonicalHash(body)!==contentHash)throw new TypeError('Audit report hash mismatch');return report;
 }

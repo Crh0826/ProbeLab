@@ -54,10 +54,10 @@ CI runs package tests, TypeScript and the complete browser-workbench build. Brow
 
 运行 `npm ci` → `npm test` → `npm run dev`，打开终端显示的网址。上方切换“探索与重放”和“地图体检”。示例故障均有明确标注；接入自己的地图后，体检结果会保留位置、几何ID、失败路径和重放输入。确定错误与待复核候选分开显示，导出 JSON 后可移交给开发者修复。
 
-## Workbench preview
+## Preview and acceptance
 
 ![Independent map audit](docs/map-audit-demo.png)
 
-![Actual independent route replay](docs/route-replay-demo.png)
+![Strict route replay](docs/route-replay-demo.png)
 
-Local acceptance: 46 package tests passed (29 core, 8 audit, 6 sandbox, 3 CLI), no skipped tests. The standalone browser workbench was exercised in Chrome, including strict audit-route replay and Worker cleanup on tab switches.
+Local acceptance: 46 tests passed, no skips; standalone Chrome checks cover actual driver replay and Worker cleanup. Audit exports retain a debug geometry snapshot, so old reports can still be inspected after a map changes. Execution replay requires the current semantic source hash to match.

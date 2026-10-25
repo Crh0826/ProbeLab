@@ -72,6 +72,6 @@ export async function auditMap(map:AuditMap,driver:AuditDriver,options:{maxRoute
     }
     options.progress?.(checked.routes,selected.length);await options.yield?.();
   }
-  const body:Omit<AuditReport,'contentHash'>={schemaVersion:1,kind:'probelab-map-audit',mapId:map.id,sourceHash:map.sourceHash,issues,evidence,checked,incomplete:cancelled()||checked.routes<map.routes.length,limits:{maxRoutes,maxTicksPerAttempt:maxTicks},limitations:['只覆盖已列出的定向路径和射线，不证明整图可达。','弧形/旋转/复杂模型视觉需在实际渲染现场复核。','review是候选，不自动当成游戏Bug或自动改地图。']};
+  const body:Omit<AuditReport,'contentHash'>={schemaVersion:1,kind:'probelab-map-audit',mapId:map.id,sourceHash:map.sourceHash,debugMap:{surfaces},issues,evidence,checked,incomplete:cancelled()||checked.routes<map.routes.length,limits:{maxRoutes,maxTicksPerAttempt:maxTicks},limitations:['只覆盖已列出的定向路径和射线，不证明整图可达。','弧形/旋转/复杂模型视觉需在实际渲染现场复核。','review是候选，不自动当成游戏Bug或自动改地图。']};
   return {...body,contentHash:canonicalHash(body)};
 }
