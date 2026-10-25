@@ -1,0 +1,1 @@
+import React from 'react';import{createRoot}from'react-dom/client';import{ProbeLabApp}from'./probelab/ProbeLabApp.js';import'./probelab/probelab.css';createRoot(document.getElementById('root')!).render(<React.StrictMode><ProbeLabApp/></React.StrictMode>);

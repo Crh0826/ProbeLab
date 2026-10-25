@@ -1,0 +1,22 @@
+.probe-viewer-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #10161d;
+  touch-action: none;
+}
+
+.probe-viewer-stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+.probe-viewer-stage:focus-visible {
+  outline: 2px solid #72d6c1;
+  outline-offset: -2px;
+}

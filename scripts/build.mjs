@@ -1,0 +1,2 @@
+import{spawnSync}from'node:child_process';for(const name of ['@probelab/core','@probelab/audit','@probelab/sandbox','@probelab/viewer','@probelab/cli','@probelab/demo']){const r=spawnSync('npm run build -w '+name,{shell:true,stdio:'inherit',windowsHide:true});if(r.status!==0)process.exit(r.status??1);}
+const fixture=spawnSync('node scripts/fixtures.mjs',{shell:true,stdio:'inherit',windowsHide:true});if(fixture.status!==0)process.exit(fixture.status??1);
